@@ -1,0 +1,43 @@
+
+<p>get-allcandidats works!</p>
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input type class="form-control"  placeholder="Search by name" [(ngModel)]="name" />
+         
+           
+       
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchTitle()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Tutorials List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let candidat of candidats; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveCandidat(candidat, i)"
+        >
+          {{ candidat.name}}
+        </li>
+      </ul>
+  
+      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllCandidats()">
+        Remove All
+      </button>
+    </div>
+    <div class="col-md-6">
+      <app-candidat-details 
+      [viewMode]="true" [currentCandidat]="currentCandidat"> 
+    </app-candidat-details>
+    </div>
+  </div>
